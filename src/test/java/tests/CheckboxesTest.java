@@ -22,8 +22,12 @@ import java.util.ArrayList;
 public class CheckboxesTest {
 
     private WebDriver driver;
+    private final String CHECKBOX_LINK = "http://the-internet.herokuapp.com/checkboxes";
+    private final String CHECKBOX_CSS_SELECTOR = "[type=checkbox]";
     private final int FIRST_CHECKBOX_INDEX = 0;
     private final int SECOND_CHECKBOX_INDEX = 1;
+    private final String CHECKBOX_IS_SELECTED_TEXT = "Checkbox is selected";
+    private final String CHECKBOX_IS_UNSELECTED_TEXT = "Checkbox is unselected";
 
     @BeforeClass
     public void openBrowser(){
@@ -37,42 +41,42 @@ public class CheckboxesTest {
 
     @Test
     public void verifyFirstCheckboxIsUncheckedTest() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        driver.get(CHECKBOX_LINK);
         ArrayList<WebElement> checkboxes = (ArrayList<WebElement>)
-                driver.findElements(By.cssSelector("[type=checkbox]"));
+                driver.findElements(By.cssSelector(CHECKBOX_CSS_SELECTOR));
         boolean isCheckboxSelected = checkboxes.get(FIRST_CHECKBOX_INDEX).isSelected();
-        Assert.assertFalse(isCheckboxSelected, "Checkbox is selected");
+        Assert.assertFalse(isCheckboxSelected, CHECKBOX_IS_SELECTED_TEXT);
     }
 
     @Test
     public void selectFirstCheckboxTest() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        driver.get(CHECKBOX_LINK);
         ArrayList<WebElement> checkboxes = (ArrayList<WebElement>)
-                driver.findElements(By.cssSelector("[type=checkbox]"));
+                driver.findElements(By.cssSelector(CHECKBOX_CSS_SELECTOR));
         WebElement checkboxElement = checkboxes.get(FIRST_CHECKBOX_INDEX);
         checkboxElement.click();
         boolean isCheckboxSelected = checkboxes.get(FIRST_CHECKBOX_INDEX).isSelected();
-        Assert.assertTrue(isCheckboxSelected, "Checkbox is unselected");
+        Assert.assertTrue(isCheckboxSelected, CHECKBOX_IS_UNSELECTED_TEXT);
     }
 
     @Test
     public void verifySecondCheckboxIsUncheckedTest() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        driver.get(CHECKBOX_LINK);
         ArrayList<WebElement> checkboxes = (ArrayList<WebElement>)
-                driver.findElements(By.cssSelector("[type=checkbox]"));
+                driver.findElements(By.cssSelector(CHECKBOX_CSS_SELECTOR));
         boolean isCheckboxSelected = checkboxes.get(SECOND_CHECKBOX_INDEX).isSelected();
-        Assert.assertTrue(isCheckboxSelected, "Checkbox is unselected");
+        Assert.assertTrue(isCheckboxSelected, CHECKBOX_IS_UNSELECTED_TEXT);
     }
 
     @Test
     public void unselectSecondCheckboxTest() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        driver.get(CHECKBOX_LINK);
         ArrayList<WebElement> checkboxes = (ArrayList<WebElement>)
-                driver.findElements(By.cssSelector("[type=checkbox]"));
+                driver.findElements(By.cssSelector(CHECKBOX_CSS_SELECTOR));
         WebElement checkboxElement = checkboxes.get(SECOND_CHECKBOX_INDEX);
         checkboxElement.click();
         boolean isCheckboxSelected = checkboxes.get(SECOND_CHECKBOX_INDEX).isSelected();
-        Assert.assertFalse(isCheckboxSelected, "Checkbox is selected");
+        Assert.assertFalse(isCheckboxSelected, CHECKBOX_IS_SELECTED_TEXT);
     }
 
     @AfterClass

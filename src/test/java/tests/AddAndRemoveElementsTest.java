@@ -20,9 +20,12 @@ import java.util.ArrayList;
  * By.xpath("//button[text()='Delete']")
  */
 
-public class AddAndRemoteElementsTest {
+public class AddAndRemoveElementsTest {
 
     private WebDriver driver;
+    private final String ADD_REMOVE_LINK = "http://the-internet.herokuapp.com/add_remove_elements/";
+    private final String ADD_ELEMENT_XPATH = "//button[text()='Add Element']";
+    private final String DELETE_ELEMENT_XPATH = "//button[text()='Delete']";
     private final int AFTER_REMOVE_SECOND_ELEMENT_COUNT = 1;
     private final int ADD_ONE_ELEMENT_COUNT = 1;
     private final int ADD_TWO_ELEMENTS_COUNT = 2;
@@ -39,33 +42,33 @@ public class AddAndRemoteElementsTest {
 
     @Test
     public void addOneElementTest() {
-        driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
+        driver.get(ADD_REMOVE_LINK);
+        driver.findElement(By.xpath(ADD_ELEMENT_XPATH)).click();
         ArrayList<WebElement> actualElements = (ArrayList<WebElement>)
-                driver.findElements(By.xpath("//button[text()='Delete']"));
+                driver.findElements(By.xpath(DELETE_ELEMENT_XPATH));
         int actualElementsNumber = actualElements.size();
         Assert.assertEquals(actualElementsNumber, ADD_ONE_ELEMENT_COUNT);
     }
 
     @Test
     public void addTwoElementsTest() {
-        driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
+        driver.get(ADD_REMOVE_LINK);
+        driver.findElement(By.xpath(ADD_ELEMENT_XPATH)).click();
+        driver.findElement(By.xpath(ADD_ELEMENT_XPATH)).click();
         ArrayList<WebElement> actualElements = (ArrayList<WebElement>)
-                driver.findElements(By.xpath("//button[text()='Delete']"));
+                driver.findElements(By.xpath(DELETE_ELEMENT_XPATH));
         int actualElementsNumber = actualElements.size();
         Assert.assertEquals(actualElementsNumber, ADD_TWO_ELEMENTS_COUNT);
     }
 
     @Test
     public void addAndRemoveSecondElementTest() {
-        driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-        driver.findElement(By.xpath("//button[text()='Delete']")).click();
+        driver.get(ADD_REMOVE_LINK);
+        driver.findElement(By.xpath(ADD_ELEMENT_XPATH)).click();
+        driver.findElement(By.xpath(ADD_ELEMENT_XPATH)).click();
+        driver.findElement(By.xpath(DELETE_ELEMENT_XPATH)).click();
         ArrayList<WebElement> actualElements = (ArrayList<WebElement>)
-                driver.findElements(By.xpath("//button[text()='Delete']"));
+                driver.findElements(By.xpath(DELETE_ELEMENT_XPATH));
         int actualElementsNumber = actualElements.size();
         Assert.assertEquals(actualElementsNumber, AFTER_REMOVE_SECOND_ELEMENT_COUNT);
     }
