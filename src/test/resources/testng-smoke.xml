@@ -3,23 +3,23 @@
 
 <suite name="Smoke">
     <test name="Context Menu Test">
-            <classes>
-                <class name="hrcapp.com.tests.ContextMenuTest"></class>
-            </classes>
-        </test>
-        <test name="Dynamic Control Test">
-            <classes>
-                <class name="hrcapp.com.tests.DynamicControlTest"></class>
-            </classes>
-        </test>
+        <classes>
+            <class name="hrcapp.com.tests.ContextMenuTest"></class>
+        </classes>
+    </test>
+    <test name="Dynamic Control Test">
+        <classes>
+            <class name="hrcapp.com.tests.DynamicControlTest"></class>
+        </classes>
+    </test>
     <test name="Upload File Test">
-            <classes>
-                <class name="hrcapp.com.tests.UploadFileTest"></class>
-            </classes>
-        </test>
-        <test name="Frame Test">
-            <classes>
-                <class name="hrcapp.com.tests.FrameTest"></class>
-            </classes>
-        </test>
+        <classes>
+            <class name="hrcapp.com.tests.UploadFileTest"></class>
+        </classes>
+    </test>
+    <test name="Frame Test">
+        <classes>
+            <class name="hrcapp.com.tests.FrameTest"></class>
+        </classes>
+    </test>
 </suite>

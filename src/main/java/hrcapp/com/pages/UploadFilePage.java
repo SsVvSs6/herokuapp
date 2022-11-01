@@ -13,7 +13,7 @@ public class UploadFilePage extends BasePage {
     @FindBy (xpath = "//input[@id='file-upload']")
     private WebElement fileUploadButton;
 
-    @FindBy (xpath = "//div[@id='drag-drop-upload']")
+    @FindBy (xpath = "//form/input[@type='file']")
     private WebElement uploadFileDragAndDrop;
 
     @FindBy (xpath = "//input[@id='file-submit']")
@@ -30,18 +30,6 @@ public class UploadFilePage extends BasePage {
         return this;
     }
 
-    public WebElement getUploadFileDragAndDrop() {
-        return uploadFileDragAndDrop;
-    }
-
-    public void clickFileUploadButton() {
-        fileUploadButton.click();
-    }
-
-    public WebElement getFileUploadButton() {
-        return fileUploadButton;
-    }
-
     public WebElement getFileName() {
         return fileName;
     }
@@ -52,5 +40,10 @@ public class UploadFilePage extends BasePage {
 
     public void clickUploadSubmitButton() {
         uploadSubmitButton.click();
+    }
+
+    public UploadFilePage dragAndDropFile(String urlToFile) {
+        uploadFileDragAndDrop.sendKeys(urlToFile);
+        return this;
     }
 }

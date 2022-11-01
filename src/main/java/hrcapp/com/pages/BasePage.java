@@ -1,6 +1,7 @@
 package hrcapp.com.pages;
 
 import hrcapp.com.driver.DriverSingleton;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -26,5 +27,10 @@ public abstract class BasePage {
     public WebElement waitElementToBeClickable(WebElement element) {
         return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public Alert waitAlert() {
+        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions.alertIsPresent());
     }
 }
